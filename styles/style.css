@@ -8,16 +8,12 @@ html {
   block-size: 100%;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 .page {
   display: flex;
   margin: auto;
   padding: 133px 30px;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Fira Sans Condensed', Arial, sans-serif;
   font-size: 18px;
   background-color: #1b1919;
   inline-size: 1200px;
@@ -99,7 +95,7 @@ ol {
 
 .search-form__fieldset-title {
   color: #fff;
-  font-family: 'Fira Sans Condensed';
+  font-family: inherit;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
@@ -108,7 +104,7 @@ ol {
 
 .search-form__label-text {
   color: #fff;
-  font-family: 'Fira Sans Condensed';
+  font-family: inherit;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
@@ -116,11 +112,11 @@ ol {
 }
 
 .search-form__textfield {
-  width: 225px;
+  min-width: 225px;
   border: none;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.70);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.70);
-  color: rgba(255, 255, 255, 0.70);
+  border-top: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: #fff;
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
@@ -135,14 +131,13 @@ ol {
   outline: none;
 }
 
+.search-form__textfield:hover {
+  cursor: text;
+}
+
 .search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
   outline-offset: 1px;
-}
-
-.search-form__textfield:hover {
-  text-decoration: none;
-  cursor: text;
 }
 
 .search-form__textfield:active {
@@ -161,13 +156,9 @@ ol {
   gap: 5px;
 }
 
-.search-form__label:hover {
+.search-form__label:not(:has(.search-form__textfield)):hover {
   text-decoration: underline;
   text-underline-offset: 2px;
-}
-
-.search-form__label-town:hover {
-  text-decoration: none;
 }
 
 .search-form__pseudo-checkbox {
@@ -176,6 +167,10 @@ ol {
   height: 19px;
   border: 1.5px solid #fff;
   background-color: transparent;
+}
+
+.search-form__pseudo-checkbox:hover {
+  cursor: pointer;
 }
 
 input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
@@ -190,9 +185,9 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  border: 1px solid #fff;
+  border: 1px solid currentColor;
   color: #fff;
-  font-family: 'Fira Sans Condensed';
+  font-family: inherit;
   font-weight: 700;
   font-size: 18px;
   font-style: normal;
@@ -226,14 +221,10 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   height: 34px;
 }
 
-.content__details {
-  padding-block-start: 5px;
-}
-
 .title {
   margin-block-end: 26px;
   color: #fff;
-  font-family: 'Oswald';
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 75px;
   font-style: normal;
@@ -248,7 +239,7 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
 .content__list {
   position: relative;
   height: 298px;
-  overflow: hidden scroll;
+  overflow: auto scroll;
 }
 
 .content__list-item:not(:last-child) {
@@ -257,14 +248,18 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
 
 .content__card-link {
   display: block;
-  margin: 3px;
+  margin: 2px;
   color: #fff;
-  font-family: 'Fira Sans Condensed';
+  font-family: inherit;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
   line-height: 16.2px;
   text-decoration: none;
+}
+
+.content__card-link:focus {
+  outline: none;
 }
 
 .content__card-link:focus-visible {
@@ -280,15 +275,14 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   display: flex;
   justify-content: space-between;
   width: 394px;
-  padding: 2px;
 }
 
-.content__video-card:hover {
+.content__card-link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.content__video-card:active {
+.content__card-link:active {
   background: #545050;
 }
 
@@ -296,18 +290,10 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   background: #545050;
 }
 
-.content__video-card:focus {
-  outline: none;
-}
-
-.content__video-card:focus-visible {
-  outline: 1px solid #fff;
-}
-
 .content__video-card-title {
   margin-block-end: 6px;
   color: #fff;
-  font-family: 'Oswald';
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 30px;
   font-style: normal;
@@ -319,6 +305,8 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   flex-shrink: 0;
   width: 194px;
   height: 103px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .more-button {
